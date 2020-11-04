@@ -142,3 +142,19 @@ console.log(nombresArray)
 
 
 
+// EJERCITACION
+
+// Crear una función invertirCaso que tome como argumento un string string y devuelva un string donde cada letra tiene el caso invertido, es decir, cada letra está mayúscula si estaba en minúscula, y viceversa.
+
+// invertirCaso('Ada Lovelace') // 'aDA lOVELACE'
+// invertirCaso('feliz cumple') // 'FELIZ CUMPLE'
+// invertirCaso('jAvAsCrIpT') // 'JaVaScRiPt'
+
+
+const invertirCaso = (string) => {
+    for (let i = 0; i < string.length; i++) {
+        console.log(string[i])
+    }
+} 
+
+invertirCaso("Ada Lovelace")
