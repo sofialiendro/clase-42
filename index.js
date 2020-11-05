@@ -141,20 +141,176 @@ nombresArray.sort()
 console.log(nombresArray)
 
 
+// while
+// Estructura de repeticion 
+// El codigo dentro del while se ejecuta siempre y cuando la condicion sea verdadera
+
+let numero = 0
+while (numero > 10) {
+  console.log(numero)
+  numero++ // hay que poner ++ porque si no no cambia el numero
+}
+
+//asi mostramos la tabla del nueve
+let numero = 9
+while (numero <= 90) {
+  console.log(numero) 
+  numero += 9
+}
+
+// el for y el while son parecidos. 
+
+
+// do / while 
+// se ejecuta siempre al menos una vez sin importar si la condicion es falsa
+//ejemplo:
+do {
+  console.log(numero)
+  numero++
+}
+while (numero < 3)
+
+
 
 // EJERCITACION
 
 // Crear una función invertirCaso que tome como argumento un string string y devuelva un string donde cada letra tiene el caso invertido, es decir, cada letra está mayúscula si estaba en minúscula, y viceversa.
 
-// invertirCaso('Ada Lovelace') // 'aDA lOVELACE'
-// invertirCaso('feliz cumple') // 'FELIZ CUMPLE'
-// invertirCaso('jAvAsCrIpT') // 'JaVaScRiPt'
 
+
+// podemos recorrer un string como recorremos un array
+// letra.toUpperCase() === letra
+// convertir mayus a minus y vicerversa
+
+// ahora puedo:
+// 1 crear un string nuevo con mayus y minus invertidas
+// 2 modificar el string que recibi
 
 const invertirCaso = (string) => {
-    for (let i = 0; i < string.length; i++) {
-        console.log(string[i])
+  let nuevoString = ''
+  for (let i = 0; i < string.length; i++) {
+  if (string[i].toUpperCase() === string[i]) {
+    nuevoString += string[i].toLowerCase()
+    // es equivalente a
+    // nuevoString = nuevoString + string[i].toLowerCase()
     }
-} 
+    else {
+      nuevoString += string[i].toUpperCase()
+    }
+  }
+  return nuevoString
+}
+// otra opcion:
+const invertirCaso = string => {
+  for (let i = 0; i < string.length; i++) {
+    if (string[i].toUpperCase() === string[i]) {
+      string[i] = string[i].toLowerCase();
+    } else {
+      string[i] = string[i].toUpperCase();
+    }
+  }
+  return string;
+};
 
-invertirCaso("Ada Lovelace")
+console.log(invertirCaso('Ada Lovelace')); // 'aDA lOVELACE'
+console.log(invertirCaso('feliz cumple')); // 'FELIZ CUMPLE'
+console.log(invertirCaso('jAvAsCrIpT')); // 'JaVaScRiPt'
+
+
+
+
+// Crear una funci´ón contiene que tome como argumentos un número numero y un array de números numeros y devuelva true o false dependiendo de si dicho numero se encuentra en el array de numeros. Ejemplo:
+
+const contiene = (num, array) => {
+    if (array.includes(num)) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+const contieneMejorado = (num, array) => {
+    return (array.includes(num))
+}
+
+// contieneMejorado es igual a "contiene", pero mas avanzado
+
+const contiene2 = (num, array) => {
+    for (let i = 0; i < array.length; i++) {
+        if (num === array[i]) {
+            return true
+            // la unica manera en la que entramos a este if es si num es igual a uno de los elementos del array
+        }
+        
+    }
+    // llegamos a este momento del codigo solo si no hay un numero === array[i]
+    return false
+}
+
+// contiene y contiene2 son equivalentes
+//el metodo includes equivale al for
+
+console.log(contiene(54, [5, 7, 99, 3, 4, 54, 2, 12])) // true
+console.log(contiene(103, [5, 7, 99, 3, 4, 54, 2, 12])) // false
+
+
+
+// Crear una función ganar que tome como argumento un array tragamonedas con 5 símbolos y devuelva true si son iguales y false sino. Si el array tiene más de 5 símbolos, s´ólo debe comparar los 5 primeros.
+
+const ganar = (array) => {
+    if (array[0] === array[1] && array[1] === array[2] && array[2] === array[3] && array[3] === array[4]) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+
+console.log(ganar(['⭐️', '⭐️', '⭐️', '💫', '✨'])) // false
+console.log(ganar(['💫', '💫', '💫', '💫', '💫'])) // true
+console.log(ganar(['💫', '💫', '💫', '💫', '💫', '⭐️'])) // true
+
+
+
+// Crear una función estanJuntos que tome como argumento un array de strings personajes, y devuelva true si Sam se encuentra al lado de Frodo, ya sea antes o después, o false sino. Ejemplo:
+
+// sabiendo el indice de sam, fijarme si frodo esta antes o despues
+// fijarme si el indice de frodo  + 1 o  - 1 es igual al de sam 
+
+const estanJuntos = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "Sam") {
+      // array[i]
+      // i es el lugar donde esta Sam 
+      // i + 1 e i - 1
+      if (array[i + 1] === "Frodo" || array[i - 1] === "Frodo") {
+        return true
+      }
+    } 
+ }
+  return false
+}
+
+console.log(estanJuntos(['Sam', 'Frodo', 'Legolas'])) //true
+console.log(estanJuntos(['Aragorn', 'Frodo', 'Frodo'])) //false
+console.log(estanJuntos(['Sam', 'Orco', 'Frodo'])) //false
+
+
+
+
+
+
+let continuarPrograma = true
+
+while (continuarPrograma) {
+  let respuestaUsuario = prompt("Diga cuanto tardo la vuelta")
+  let confirmar = confirm("Hay alguna vuelta pendiente?")
+
+  console.log(respuestaUsuario)
+
+  if (confirmar === false) {
+    continuarPrograma = false 
+  }
+
+}
